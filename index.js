@@ -5,7 +5,7 @@ const Manager = require('./lib/manager');
 // const Engineer = require('./lib/engineer');
 const Engineer = require('./lib/engineer')
 const Intern = require('./lib/intern');
-const CreateTeam = require('./src/createHtml')
+const CreateHtml = require('./src/createHtml')
 
 const newTeam = [];
 // THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
@@ -145,8 +145,10 @@ const teamQuestions = async () => {
 
      } else{ 
         console.info('build team')
+        new CreateHtml();
     }
     console.log(newTeam)
+    
 }
 managerQuestions()
 // teamQuestions();
