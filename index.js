@@ -112,7 +112,7 @@ const internQuestions = async () => {
       answers.name,
       answers.id,
       answers.email,
-      answers.github
+      answers.school
      )
      newTeam.push(intern)
      console.info('New intern added!')
@@ -123,8 +123,8 @@ const internQuestions = async () => {
 const teamQuestions = async () => {
     
     // add prompt to ask if adding engineer or
-    const teamBuild = new CreateHtml();
-    
+    const teamBuilder = new CreateHtml();
+
     const addMember = await inquirer
      .prompt([
         { 
@@ -147,7 +147,7 @@ const teamQuestions = async () => {
         // console.info('build team');
         console.log(newTeam)
 
-        teamBuild.writeFile();
+        teamBuilder.writeFile();
 
      }
         

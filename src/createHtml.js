@@ -34,6 +34,10 @@ class CreateHtml{
 
       })
     }
+
+    createTeam(){
+      
+    }
 }
 
 // class BuildTeam{
