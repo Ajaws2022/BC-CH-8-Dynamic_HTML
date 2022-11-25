@@ -5,14 +5,33 @@
 // const { name } = data.name
 // const { email } = data.email
 class CreateHtml{
+
     writeFile(){
-        const fs = require('fs')
-        const data = '<script src="./src/createHtml.js"></script>'
+
+        const fs = require('fs');
+
+        const cards = [];
+
+        const data = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+         <meta charset="UTF-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Team</title>
+        </head>
+        <body>
+    
+        </body>
+        </html>;`
 
         fs.writeFileSync('./dist/index.html', data, (err) => {
         if (err){
         console.log(err);
-    } console.log('file created successfully')
+        } 
+        console.log('file created successfully')
+
       })
     }
 }
@@ -25,4 +44,4 @@ class CreateHtml{
 //     }
 // }
 
-module.exports = CreateHtml
+module.exports = CreateHtml;

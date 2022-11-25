@@ -121,10 +121,10 @@ const internQuestions = async () => {
   }
 
 const teamQuestions = async () => {
-    // await managerQuestions()
-
+    
     // add prompt to ask if adding engineer or
-
+    const teamBuild = new CreateHtml();
+    
     const addMember = await inquirer
      .prompt([
         { 
@@ -143,11 +143,20 @@ const teamQuestions = async () => {
         
         return internQuestions()
 
-     } else{ 
-        console.info('build team')
-        new CreateHtml();
-    }
-    console.log(newTeam)
+     } else{
+        // console.info('build team');
+        console.log(newTeam)
+
+        teamBuild.writeFile();
+
+     }
+        
+
+        // const newTeam = new CreateHtml();
+    
+        // console.log(newTeam)
+        // return newTeam;
+        // new CreateHtml();
     
 }
 managerQuestions()
