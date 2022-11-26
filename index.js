@@ -145,8 +145,9 @@ const teamQuestions = async () => {
 
      } else{
         // console.info('build team');
-        console.log(newTeam)
-
+        console.log(newTeam);
+        // console.log(engineer);
+        teamBuilder.createTeam(newTeam);
         teamBuilder.writeFile();
 
      }

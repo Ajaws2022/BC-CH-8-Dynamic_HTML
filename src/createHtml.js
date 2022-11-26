@@ -35,9 +35,38 @@ class CreateHtml{
       })
     }
 
-    createTeam(){
-      
+    createTeam(data){
+      // create generic elements for each team members name, id, and email
+      // create an if statement to filter the employee roles and create elements accordingly
+      // const { name } = data.name
+      // const { email } = data.email
+      // const { id } = data.id
+      // if(data)
+      const managers = data.filter(obj => {
+        return obj.office
+      });
+
+      const engineers = data.filter(obj => {
+        return obj.github
+      });
+
+      const interns = data.filter(obj => {
+        return obj.school
+      });
+
+      managers.forEach((manager) => {
+        console.log(manager)
+      });
+
+      engineers.forEach((engineer) => {
+        console.log(engineer)
+      });
+
+      interns.forEach((intern) => {
+        console.log(intern)
+      })
     }
+    
 }
 
 // class BuildTeam{
