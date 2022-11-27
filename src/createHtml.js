@@ -6,42 +6,46 @@
 // const { email } = data.email
 class CreateHtml{
 
-    writeFile(){
+    // writeFile(){
 
-        const fs = require('fs');
+    //     const fs = require('fs');
 
-        const cards = [];
+    //     const cards = [];
 
-        const data = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-         <meta charset="UTF-8">
-         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>Team</title>
-        </head>
-        <body>
-    
-        </body>
-        </html>;`
+    //     const data = `
+    //     <!DOCTYPE html>
+    //     <html lang="en">
+    //     <head>
+    //      <meta charset="UTF-8">
+    //      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    //      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    //      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    //      <title>Team</title>
+    //     </head>
+    //     <body>
+    //     <header> </header>
+    //     <div id=teamDisplay class=> 
 
-        fs.writeFileSync('./dist/index.html', data, (err) => {
-        if (err){
-        console.log(err);
-        } 
-        console.log('file created successfully')
+    //     </div>
+    //     </body>
+    //     <script src="../src/createHtml.js"></script>
+    //     </html>;`
 
-      })
-    }
+    //     fs.writeFileSync('./dist/index.html', data, (err) => {
+    //     if (err){
+    //     console.log(err);
+    //     } 
+    //     console.log('file created successfully')
+
+    //   })
+    // }
 
     createTeam(data){
       // create generic elements for each team members name, id, and email
-      // create an if statement to filter the employee roles and create elements accordingly
-      // const { name } = data.name
-      // const { email } = data.email
-      // const { id } = data.id
-      // if(data)
+      const fs = require('fs');
+
+      const teamCards = [];
+
       const managers = data.filter(obj => {
         return obj.office
       });
@@ -56,25 +60,92 @@ class CreateHtml{
 
       managers.forEach((manager) => {
         console.log(manager)
+        const manCard = `
+        <div class="card m-3 shadow-lg" style="width: 18rem;">
+         <h3 class="rounded-top text-bg-primary p-3 m-0">${manager.name}</h3>
+         <h3 class="text-bg-primary p-3 m-0"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M571.31 193.94l-22.63-22.63c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31-28.9-28.9c5.63-21.31.36-44.9-16.35-61.61l-45.25-45.25c-62.48-62.48-163.79-62.48-226.28 0l90.51 45.25v18.75c0 16.97 6.74 33.25 18.75 45.25l49.14 49.14c16.71 16.71 40.3 21.98 61.61 16.35l28.9 28.9-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63l22.63 22.63c6.25 6.25 16.38 6.25 22.63 0l90.51-90.51c6.23-6.24 6.23-16.37-.02-22.62zm-286.72-15.2c-3.7-3.7-6.84-7.79-9.85-11.95L19.64 404.96c-25.57 23.88-26.26 64.19-1.53 88.93s65.05 24.05 88.93-1.53l238.13-255.07c-3.96-2.91-7.9-5.87-11.44-9.41l-49.14-49.14z"></path></svg> Manager</h3>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"> Employee ID: ${manager.id}</li>
+                <li class="list-group-item"> Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
+                <li class="list-group-item"> Office Number: ${manager.office}</li>
+              </ul>
+          </div>
+        </div>
+        `;
+        teamCards.push(manCard)
       });
 
       engineers.forEach((engineer) => {
         console.log(engineer)
+        const engCard = `
+        <div class="card m-3 shadow-lg" style="width: 18rem;">
+         <h3 class="rounded-top text-bg-primary p-3 m-0">${engineer.name}</h3>
+         <h3 class="text-bg-primary p-3 m-0"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM440.2 765h-50.8c-2.2 0-4.5-1.1-5.9-2.9L348 718.6l-35.5 43.5a7.38 7.38 0 0 1-5.9 2.9h-50.8c-6.6 0-10.2-7.9-5.8-13.1l62.7-76.8-61.2-74.9c-4.3-5.2-.7-13.1 5.9-13.1h50.9c2.2 0 4.5 1.1 5.9 2.9l34 41.6 34-41.6c1.5-1.9 3.6-2.9 5.9-2.9h50.8c6.6 0 10.2 7.9 5.9 13.1L383.5 675l62.7 76.8c4.2 5.3.6 13.2-6 13.2zm7.8-382c0 2.2-1.4 4-3.2 4H376v68.7c0 1.9-1.8 3.3-4 3.3h-48c-2.2 0-4-1.4-4-3.2V387h-68.8c-1.8 0-3.2-1.8-3.2-4v-48c0-2.2 1.4-4 3.2-4H320v-68.8c0-1.8 1.8-3.2 4-3.2h48c2.2 0 4 1.4 4 3.2V331h68.7c1.9 0 3.3 1.8 3.3 4v48zm328 369c0 2.2-1.4 4-3.2 4H579.2c-1.8 0-3.2-1.8-3.2-4v-48c0-2.2 1.4-4 3.2-4h193.5c1.9 0 3.3 1.8 3.3 4v48zm0-104c0 2.2-1.4 4-3.2 4H579.2c-1.8 0-3.2-1.8-3.2-4v-48c0-2.2 1.4-4 3.2-4h193.5c1.9 0 3.3 1.8 3.3 4v48zm0-265c0 2.2-1.4 4-3.2 4H579.2c-1.8 0-3.2-1.8-3.2-4v-48c0-2.2 1.4-4 3.2-4h193.5c1.9 0 3.3 1.8 3.3 4v48z"></path></svg> Engineer</h3>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"> Employee ID: ${engineer.id}</li>
+                <li class="list-group-item"> Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
+                <li class="list-group-item"> GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a></li>
+              </ul>
+          </div>
+        </div>
+        `;
+        teamCards.push(engCard)
       });
 
       interns.forEach((intern) => {
         console.log(intern)
+        const intCard = `
+        <div class="card m-3 shadow-lg" style="width: 18rem;">
+         <h3 class="rounded-top text-bg-primary p-3 m-0">${intern.name}</h3>
+         <h3 class="text-bg-primary p-3 m-0"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path></svg> Intern</h3>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"> Employee ID: ${intern.id}</li>
+                <li class="list-group-item"> Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
+                <li class="list-group-item"> School: ${intern.school}</li>
+              </ul>
+          </div>
+        </div>
+        `;
+        teamCards.push(intCard)
+        
       })
-    }
+      console.log(teamCards)
+      const newPage = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+         <meta charset="UTF-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+         <title>Team</title>
+        </head>
+        <header class="container-fluid text-center bg-danger mb-5">
+          <h1 p-3>Team</h1>  
+        </header>
+        <body>
+
+         <div class="container-fluid d-flex flex-wrap flex-row justify-content-center">
+           ${teamCards.join('')}
+         </div>
+        
+        </body>
+        <script src="../src/createHtml.js"></script>
+        </html>`
+
+        fs.writeFileSync('./dist/index.html', newPage, (err) => {
+          if (err){
+          console.log(err);
+          } 
+          console.log('file created successfully')
+  
+        })
+    };
     
 }
 
-// class BuildTeam{
-//     constructor(data){
-//         const { name } = data.name;
-//         const { role } = data.role;
-//         const { email } = data.email
-//     }
-// }
 
 module.exports = CreateHtml;
