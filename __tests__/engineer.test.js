@@ -1,9 +1,10 @@
 const Engineer = require("../lib/engineer")
 
 describe('engineer', () => {
-    it('should return objects with the role of engineer', () => {
-        const obj = new Engineer();
+    it('Should return the role of "engineer"', () => {
 
-        expect('role' in obj).toEqual('Engineer')
-    })
+        const e = new Engineer('name', 1, 'email@email.com')
+    
+        expect(e.getRole()).toBe('engineer')
+      })
 })
